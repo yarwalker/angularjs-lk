@@ -155,6 +155,13 @@
                 console.log(list);
             }
         }
+
+        $scope.showForgetPassModal = function(){
+            var title = 'Восстановление пароля',
+                body = '';
+
+            ModalService.showModal( title, body, 'modalForgetPass');
+        }
     }
 
 }());

@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3>Восстановление пароля</h3>
+</div>
+<form name="forget_pass_form" novalidate ng-submit="">
+    <div class="modal-body">
+        <p>Укажите свой email</p><input type="email" name="recovery-email" id="recovery-email" class="form-control" type="email" autocomplete="off">
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

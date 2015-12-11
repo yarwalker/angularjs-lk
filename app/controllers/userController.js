@@ -26,12 +26,12 @@
                             console.log('error: '); console.log(data);
                             modal_title = 'Ошибка';
                             modal_body = MessageService.getMessage( data.error.code );
-                            ModalService.showModal(modal_title, modal_body);
+                            ModalService.showModal(modal_title, modal_body, null);
                         } else {
                             // выводим сообщение о cохраненных данных юзера
                             modal_title = 'Сообщение';
                             modal_body = MessageService.getMessage( 1003 );
-                            ModalService.showModal(modal_title, modal_body);
+                            ModalService.showModal(modal_title, modal_body, null);
 
                             // сохраним данные в глобальную переменную
                             // обновим данные юзера
@@ -47,7 +47,7 @@
                                     // console.log('GetUserInfo promise failed', error);
                                     modal_title = 'Ошибка';
                                     modal_body = MessageService.getMessage( error );
-                                    ModalService.showModal(modal_title, modal_body);
+                                    ModalService.showModal(modal_title, modal_body, null);
                                 });
 
                             $rootScope.user = GlobalService.getUser();
@@ -57,7 +57,7 @@
                         console.log(error);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage(error);
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     });
             }
             //error captcha
@@ -66,12 +66,20 @@
             }
         };
 
-        $scope.changePassword = function(struct){
+        $scope.changePassword = function(pass){
             console.log('changePassword');
 
-            console.log(struct);
+            console.log(pass);
 
-        }
+            //ModalService.ok();
+        };
+
+        $scope.showChangePassModal = function(){
+            var title = 'Изменение пароля',
+                body = '';
+
+            ModalService.showModal( title, body, 'modalChangePass');
+        };
 
         $scope.submitUserRegForm = function(user){
             console.log('submitUserRegForm');
@@ -88,7 +96,7 @@
                             //console.log('error: '); console.log(data);
                             modal_title = 'Ошибка';
                             modal_body = MessageService.getMessage( data.error.code );
-                            ModalService.showModal(modal_title, modal_body);
+                            ModalService.showModal(modal_title, modal_body, null);
                         } else {
                             // сохраним данные в глобальную переменную
                             GlobalService.setUser( data.result, true );
@@ -100,7 +108,7 @@
                         console.log(error);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage(error);
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     });
             }
             //error captcha
@@ -126,7 +134,7 @@
                             //console.log('error: '); console.log(data);
                             modal_title = 'Ошибка';
                             modal_body = MessageService.getMessage( data.error.code );
-                            ModalService.showModal(modal_title, modal_body);
+                            ModalService.showModal(modal_title, modal_body, null);
                         } else {
                             // сохраним данные в глобальную переменную
                             GlobalService.setUser( data.result, true );
@@ -139,7 +147,7 @@
                         console.log('GetUserInfo promise failed', error);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage(error);
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     });
             }
         } else {

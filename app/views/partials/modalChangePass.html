@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3>Изменение пароля</h3>
+</div>
+<form name="change_pass_form" novalidate ng-submit="changePassword(new_pass)">
+    <div class="modal-body">
+        <p>Укажите новый пароль</p><input type="password" class="form-control" autocomplete="off" ng-model="new_pass" ng-minlength="8" required>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="!change_pass_form.$valid">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</form>

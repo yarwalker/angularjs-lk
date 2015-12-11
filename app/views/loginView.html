@@ -4,7 +4,7 @@
             <div class="col-xs-12">
                 <div class="form-wrap">
                     <h1>Log in with your email account</h1>
-                    <form role="form" action="javascript:;" method="post" name="loginForm" id="loginForm"
+                    <form name="loginForm" id="loginForm"
                           autocomplete="off" novalidate="novalidate" ng-submit="submitLoginForm()">
                         <div class="form-group">
                             <label for="login" class="sr-only">Email</label>
@@ -24,7 +24,8 @@
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in" ng-disabled="!loginForm.$valid">
                     </form>
-                    <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>&nbsp;
+                    <!--a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>&nbsp;-->
+                    <a href="" class="forget" ng-click="showForgetPassModal()" >Забыли пароль?</a>&nbsp;
                     <a href="#/register" class="forget" >Registration</a>
                 </div>
             </div> <!-- /.col-xs-12 -->

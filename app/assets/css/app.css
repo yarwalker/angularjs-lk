@@ -96,6 +96,8 @@ div.header-right-row div.i-link {
 .modal-show { display: block !important; }
 #myModal { display: none; }
 
+.modal-header h3 { margin: 0; }
+
 /* 2. Login View */
 /*    --------------------------------------------------
 	:: Login Section

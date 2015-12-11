@@ -85,7 +85,7 @@
                             console.log('error: '); console.log(data);
                             modal_title = 'Ошибка';
                             modal_body = MessageService.getMessage( data.error.code );
-                            ModalService.showModal(modal_title, modal_body);
+                            ModalService.showModal(modal_title, modal_body, null);
                         } else {
                             // передаем найденные компании в представление
                             $scope.groups = data.result;
@@ -95,7 +95,7 @@
                         console.log('GetUserInfo promise failed', error);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage(data.error.code);
-                        ModalService.showModal();
+                        ModalService.showModal(modal_title, modal_body, null);
                     });
             }
         };
@@ -131,7 +131,7 @@
                         console.log('error: '); console.log(data);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage( data.error.code );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     } else {
                         // сохраним данные в глобальную переменную
                         console.log(data);
@@ -139,7 +139,7 @@
                         // выводим сообщение об отправленной заявке на создание
                         modal_title = 'Сообщение';
                         modal_body = MessageService.getMessage( 1004 );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
 
                         var group_promise = SocketService.getGroupInfo();
                         group_promise
@@ -148,7 +148,7 @@
                                     console.log(data);
                                     modal_title = 'Ошибка';
                                     modal_body = MessageService.getMessage( data.error.code );
-                                    ModalService.showModal(modal_title, modal_body);
+                                    ModalService.showModal(modal_title, modal_body, null);
                                 } else {
                                     GlobalService.setGroup(data.result);
                                 }
@@ -158,7 +158,7 @@
                             }, function (error) {
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage(error);
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
 
                         // обновим данные юзера
@@ -174,7 +174,7 @@
                                 // console.log('GetUserInfo promise failed', error);
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage( error );
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
 
                         $rootScope.user = GlobalService.getUser();
@@ -184,7 +184,7 @@
                     console.log('GetUserInfo promise failed', error);
                     modal_title = 'Ошибка';
                     modal_body = MessageService.getMessage(data.error.code);
-                    ModalService.showModal();
+                    ModalService.showModal(modal_title, modal_body, null);
                 });
         };
 
@@ -202,7 +202,7 @@
                         console.log('error: '); console.log(data);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage( data.error.code );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     } else {
                         // сохраним данные в глобальную переменную
                         console.log(data);
@@ -210,7 +210,7 @@
                         // выводим сообщение о сохранении данных компании
                         modal_title = 'Сообщение';
                         modal_body = MessageService.getMessage( 1005 );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
 
                         var group_promise = SocketService.getGroupInfo();
                         group_promise
@@ -219,7 +219,7 @@
                                     console.log(data);
                                     modal_title = 'Ошибка';
                                     modal_body = MessageService.getMessage( data.error.code );
-                                    ModalService.showModal(modal_title, modal_body);
+                                    ModalService.showModal(modal_title, modal_body, null);
                                 } else {
                                     GlobalService.setGroup(data.result);
                                 }
@@ -229,7 +229,7 @@
                             }, function (error) {
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage(error);
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
                     }
                 }, function(error){
@@ -237,7 +237,7 @@
                     console.log('SetGroupAttributes promise failed', error);
                     modal_title = 'Ошибка';
                     modal_body = MessageService.getMessage(data.error.code);
-                    ModalService.showModal();
+                    ModalService.showModal(modal_title, modal_body, null);
                 });
         };
 
@@ -259,12 +259,12 @@
                         console.log('error: ');
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage( data.error.code );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     } else {
                         // выводим сообщение об отправленной заявке на присоединение
                         modal_title = 'Сообщение';
                         modal_body = MessageService.getMessage( 1000 );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
 
                         //$scope.group.name = group_name;
 
@@ -281,7 +281,7 @@
                                 // console.log('GetUserInfo promise failed', error);
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage( error );
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
 
                         $scope.user = GlobalService.getUser();
@@ -294,7 +294,7 @@
                                     if( data.error.code != 205 ) {
                                         modal_title = 'Ошибка';
                                         modal_body = MessageService.getMessage( data.error.code );
-                                        ModalService.showModal(modal_title, modal_body);
+                                        ModalService.showModal(modal_title, modal_body, null);
                                     }
                                 } else {
                                     GlobalService.setGroup(data.result);
@@ -305,7 +305,7 @@
                             }, function (error) {
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage(error);
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
                     }
                 }, function(error){
@@ -313,7 +313,7 @@
                     console.log('GetUserInfo promise failed', error);
                     modal_title = 'Ошибка';
                     modal_body = MessageService.getMessage(data.error.code);
-                    ModalService.showModal();
+                    ModalService.showModal(modal_title, modal_body, null);
                 });
 
 
@@ -332,14 +332,14 @@
                         console.log('error: '); console.log(data);
                         modal_title = 'Ошибка';
                         modal_body = MessageService.getMessage( data.error.code );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
                     } else {
 
                         console.log(data);
                         // выводим сообщение об успешной отмене запроса
                         modal_title = 'Сообщение';
                         modal_body = MessageService.getMessage( type == 'join' ? 1001 : 1002 );
-                        ModalService.showModal(modal_title, modal_body);
+                        ModalService.showModal(modal_title, modal_body, null);
 
                         // обнуляем список компаний (поиск для присоединения)
                         $scope.groups = {};
@@ -357,7 +357,7 @@
                                 // console.log('GetUserInfo promise failed', error);
                                 modal_title = 'Ошибка';
                                 modal_body = MessageService.getMessage( error );
-                                ModalService.showModal(modal_title, modal_body);
+                                ModalService.showModal(modal_title, modal_body, null);
                             });
 
                         $scope.user = GlobalService.getUser();
@@ -371,7 +371,7 @@
                     console.log('GetUserInfo promise failed', error);
                     modal_title = 'Ошибка';
                     modal_body = MessageService.getMessage(data.error.code);
-                    ModalService.showModal();
+                    ModalService.showModal(modal_title, modal_body, null);
                 });
         }
 
