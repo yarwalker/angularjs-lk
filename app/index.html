@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="proApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="proApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="proApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="proApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Личный кабинет</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Style sheets -->
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/toastr/toastr.css"/> <!-- всплывающие сообщения -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+
+  <!-- angular_captcha -->
+  <!--link rel="stylesheet" href="components/angular_captcha/foundation.min.css"/>
+  <link rel="stylesheet" href="components/angular_captcha/normalize.css"/-->
+
+
+
+</head>
+<body ng-controller="CabinetController">
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="page-wrapper">
+      <div class="container main-wrapper">
+          <div ng-show="loggedIn" class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <div class="logo">
+                <a href="/app"><img src="assets/images/logo-new.gif" border="0"></a>
+              </div>
+            </div>
+            <div class="header-right-row col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-5 col-md-ofset-4 col-sm-offset-5 col-xs-offset-5">
+              <ul class="locale-changer">
+                  <li><a href="en">ENG</a></li>
+                  <li><span>РУС</span></li>
+              </ul><br><br>
+              <div class="i-link"><i class="t-yellow-arrow"></i><a href="http://throne-bms.com/ru">Перейти на промо-сайт THRONE</a></div>
+            </div>
+          </div>
+
+          <nav ng-show="loggedIn" class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Создать проект THRONE<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Установка T-Studio</a></li>
+                      <li><a href="#">Видеоуроки</a></li>
+                      <li><a href="#">3D-моделирование для THRONE</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Прайс-лист</a></li>
+                  <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Инструкции<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Базовые инструкции</a></li>
+                      <li><a href="http://wiki.throne-bms.com" target="_blank">Справочная система</a></li>
+                    </ul>
+                  </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Профиль <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#/dashboard/profile">Редактировать мой профиль</a></li>
+                      <li ng-if="user.attr.groupState == 'ATTACHED'"><a href="#/dashboard/company">Моя компания</a></li>
+                      <li ng-if="user.attr.groupState != 'ATTACHED'"><a href="#/dashboard/company">Моя компания</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="" ng-click="logoutUser()"></i>Выйти</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+
+          <div class="row">
+            <div class="container">
+              <div ui-view></div>
+            </div>
+          </div>
+      </div>
+      <div class="buffer"></div>
+    
+  </div> <!-- /.page-wrapper -->
+
+  <div ng-show="loggedIn" class="row-fluid" style="background: #FAFAF0; padding: 15px 0 40px;border-top: 1px solid #ededed">
+    <div class="footer container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div style="float:left; margin-right: 30px;">            <a href="http://throne-bms.com/ru">Промо-сайт THRONE</a><br>
+            <a href="http://www.youtube.com/user/ThroneBMS">THRONE на Youtube</a><br>
+            <a href="http://www.facebook.com/thronebms">THRONE на Facebook</a><br>
+            <a href="https://twitter.com/ThroneBMS">THRONE в Twitter</a>        </div>
+          <div style="float:left; margin-right: 30px;">            <a href="http://wiki.throne-bms.com/ru:Throne">Справочник по системе THRONE</a><br>
+            <a href="http://wiki.throne-bms.com/ru:Sketchup">Создание 3D-моделей для THRONE</a><br>
+            <a href="http://wiki.throne-bms.com/ru:Studio">Пошаговая работа в T-Studio</a><br>
+            <a href="http://wiki.throne-bms.com/ru:Trial">Эмулятор THRONE</a>        </div>
+          <div style="float:left; margin-right: 30px;">            <a href="http://wiki.throne-bms.com/ru:Throne">T-Studio: инструкции</a><br>
+            <a href="http://throne-bms.com/pro/ru/pages/tstudio" title="Загрузить и установить T-Studio">Загрузить и установить T-Studio</a><br>
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
+          <p>(c) i-camp engineering, 2015 | <a href="https://plus.google.com/105833833797834552973" rel="publisher">THRONE on Google+</a></p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <div class="contacts">Техническая поддержка</div><div class="contacts">Skype: <a href="">throne-bms</a> <br> e-mail: <a href="mailto:support@throne-bms.com">support@throne-bms.com</a></div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-controller="DialogController"
+       ng-class="{'modal fade in modal-show' : modal.show === true, 'modal fade' : modal.show === false}"
+       close="cancelModal()" id="myModal">
+
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelModal()"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">{{ modal.title }}</h4>
+              </div>
+              <div class="modal-body">
+                  {{ modal.body }}
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelModal()">Close</button>
+              </div>
+          </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <!--script src="bower_components/angular-route/angular-route.js"></script-->
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <!--script src="bower_components/angular-mocks/angular-mocks.js"></script-->
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/ui-utils/ui-utils.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/toastr/toastr.min.js"></script>
+  <!--script src="bower_components/d3/d3.min.js"></script-->
+  <!--script src="bower_components/angular-charts/dist/angular-charts.min.js"></script-->
+  <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+  <script src="bower_components/ui-autocomplete/autocomplete.js"></script>
+  <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+
+
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+  <script src="components/angular_captcha/captcha.js"></script>
+  <!--script src="components/angular-jquery-autocomplete.js"></script-->
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+
+  <!-- Controllers -->
+  <script type="text/javascript" src="controllers/cabinetController.js"></script>
+  <script type="text/javascript" src="controllers/dialogController.js"></script>
+  <script type="text/javascript" src="controllers/userController.js"></script>
+  <script type="text/javascript" src="controllers/companyController.js"></script>
+
+
+  <!-- Services -->
+  <script type="text/javascript" src="common/services/common.services.js"></script>
+  <script type="text/javascript" src="common/services/socketService.js"></script>
+  <script type="text/javascript" src="common/services/modalService.js"></script>
+  <script type="text/javascript" src="common/services/messageService.js"></script>
+  <script type="text/javascript" src="common/services/globalService.js"></script>
+  <script type="text/javascript" src="common/services/countryResource.js"></script>
+  <script type="text/javascript" src="common/services/cityResource.js"></script>
+
+  <!-- Directives -->
+  <script type="text/javascript" src="directives/directives.js"></script>
+
+
+</body>
+</html>

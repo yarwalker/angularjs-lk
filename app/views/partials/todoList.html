@@ -1,0 +1,13 @@
+<ol id="tdl">
+    <li ng-class="{ 'disable': user.attr.userState=='ACTIVE' || user.attr.userState=='BLOCKED' }">Ввод данных пользователя</li>
+    <li ng-class="{ 'disable': user.attr.emailState=='CONFIRMED' }">Активация аккаунта.</li>
+
+    <li ng-if="user.attr.emailState == 'VERIFICATION'">Присоединение или создание компании</li>
+    <li ng-if="user.attr.emailState != 'VERIFICATION' && user.attr.groupState != 'ATTACHED'">
+        <a href="#/dashboard/company">Присоединение или создание компании</a>
+    </li>
+    <li ng-if="user.attr.groupState == 'ATTACHED'" class="disable">Присоединение или создание компании</li>
+
+    <li>Установка T-Studio</li>
+    <li><a href="http://wiki.throne-bms.com/ru:Throne">Создание проекта</a></li>
+</ol>

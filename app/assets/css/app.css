@@ -1,0 +1,283 @@
+/*-----------------------*/
+/* 1. App CSS stylesheet */
+/* 2. Login View         */
+/*-----------------------*/
+
+
+/* 1. app css stylesheet */
+html, body {
+  height: 100%;
+}
+div {
+  word-wrap: break-word;
+}
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -272px;
+}
+.main-wrapper {
+  margin-bottom: 20px;
+}
+.logo {
+  /*float: left;*/
+  margin-top: 20px;
+}
+a {
+  color: #337596;
+  text-decoration: none;
+}
+.header-right-row.col-lg-4, .header-right-row.col-md-4, .header-right-row.col-sm-4, .header-right-row.col-xs-4 {
+  text-align: right;
+}
+div.header-right-row ul {
+  list-style-type: none;
+  display: inline-block;
+  float: right;
+}
+.locale-changer {
+  margin-top: 10px;
+}
+div.header-right-row ul li {
+  float: left;
+  padding-left: 10px;
+}
+div.i-link {
+  line-height: 15px;
+  margin-bottom: 20px;
+}
+div.header-right-row div.i-link {
+  font-family: "PT Sans" , Arial;
+  font-size: 10pt;
+  padding-top: 20px;
+  display: inline;
+  float: right;
+  clear: right;
+}
+
+.buffer {
+  height: 272px;
+}
+.footer, .push {
+  /*height: 9em;*/
+}
+.footer.container .row:first-of-type { margin: 30px 0; }
+.footer.container .row:last-of-type { padding-top: 15px; border-top: 1px solid #ddd }
+
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.modal-show { display: block !important; }
+#myModal { display: none; }
+
+/* 2. Login View */
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+#login {
+  height: 315px;
+  margin-top: -157px;
+  top: 50%;
+  position: absolute;
+  width: auto;
+}
+#login .form-wrap {
+  width: 30%;
+  margin: 0 auto;
+}
+#login h1 {
+  color: #1fa67b;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+#login .form-group {
+  margin-bottom: 25px;
+}
+#login .checkbox {
+  margin-bottom: 20px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+#login .checkbox.show:before {
+  content: '\e013';
+  color: #1fa67b;
+  font-size: 17px;
+  margin: 1px 0 0 3px;
+  position: absolute;
+  pointer-events: none;
+  font-family: 'Glyphicons Halflings';
+}
+#login .checkbox .character-checkbox {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  display: inline-block;
+}
+#login .checkbox .label {
+  color: #6d6d6d;
+  font-size: 13px;
+  font-weight: normal;
+}
+#login .btn.btn-custom {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+#login .forget {
+  font-size: 13px;
+  text-align: center;
+  display: block;
+}
+
+#user_reg_form_wrapper {
+    margin-top: 10%;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+  color: #212121;
+}
+.btn-custom {
+  color: #fff;
+  background-color: #1fa67b;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+  color: #fff;
+}
+
+/*  ----------------------------------------------------
+    :: Профиль
+    --------------------------------------------------- */
+.panel-body {
+    padding: 25px 15px;
+}
+.wizard { margin-bottom: 40px; }
+.wizard a { padding: 10px 15px; cursor: pointer; }
+.wizard a.active, .wizard a.active:focus, .wizard a.active:hover {
+  color: #ffffff;
+  background-color: #ff9c00;
+}
+
+/* ---- To Do List ---- */
+#tdl li.disable {
+  text-decoration: line-through;
+}
+
+/* ---- / To Do List ---- */
+
+/* ---- Profile Edit ---- */
+#profile_edit_form {
+  width: auto;
+  margin: 30px auto 20px;
+}
+
+.captcha { display: inline-block; margin-top: 7px; }
+.captcha p {
+  display: inline;
+  width: 20px;
+  padding: 20px;
+}
+.captcha_result {
+  margin-left: 0;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.inline-link {
+  margin-top: 7px;
+  display: inline-block;
+}
+/* ---- / Profile Edit ---- */
+
+/* ---- Company ---- */
+#CompanyTabs { margin: 30px auto 20px; }
+
+#joincompany_container { margin: 20px; }
+
+#company_reg_form { margin: 20px; }
+
+.control-group { margin-bottom: 10px; }
+
+.ui-autocomplete {
+    max-height: 150px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#company_list {
+  overflow-y: auto;
+  height: 50px;
+  max-height: 300px;
+  border: solid 1px #dedede;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 10px;
+  min-height: 50px;
+  height: auto;
+}
+#company_list .group-info {
+  background-color: #fafafa;
+  border: solid 1px #efefef;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.help-block { font-size: 12px; }
+label.checkbox-inline { padding-bottom: 10px; }
+/* ---- / Company ---- */
+
+/*    --------------------------------------------------
+    :: Footer
+	-------------------------------------------------- */
+#footer {
+  color: #6d6d6d;
+  font-size: 12px;
+  text-align: center;
+}
+#footer p {
+  margin-bottom: 0;
+}
+#footer a {
+  color: inherit;
+}

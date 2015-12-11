@@ -1,0 +1,315 @@
+<uib-tabset>
+    <uib-tab heading="Присоединиться">
+        <div id="joincompany_container">
+            <form name="join_company_form" ng-submit="joinGroup(group_mix)" novalidate>
+                <fieldset>
+                    <div class="control-group">
+                        <label for="search" class="control-label">Поиск компании</label>
+                        <div class="controls">
+                            <input type="text" ng-keyup="companySearchKeyUp($event)"
+                                   name="search" value="" class="form-control input-md" id="search" placeholder="Поиск компании" maxlength="150">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button class="btn btn-primary" id="join_company" type="submit" >Присоединиться к компании</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="company_list">Список компаний</label>
+                        <div class="controls">
+                            <div id="company_list" >
+                                <found-company-list></found-company-list>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="Создать">
+        <form class="form-horizontal" name="company_reg_form" id="company_reg_form" novalidate
+                ng-submit="submitCompanyRegForm(company)">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Регистрация компании</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="name">Название компании *</label>
+                    <div class="col-md-4">
+                        <input id="name" type="text" placeholder="Название компании" class="form-control input-md" required=""
+                                ng-model="company.name">
+                        <span class="help-block">Просим вас НЕ вписывать аббревиатур форм собственности компании (ООО, ЗАО и т.д.)</span>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legalCountry">Юридический адрес *</label>
+                    <div class="col-md-4">
+                        <input id="legalCountry" type="text" placeholder="Страна" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.legalCountry"
+                               ui-autocomplete="legalCountry">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legalProvince"></label>
+                    <div class="col-md-4">
+                        <input id="legalProvince"  type="text" placeholder="Область" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.legalProvince">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legalCity"></label>
+                    <div class="col-md-4">
+                        <input id="legalCity" type="text" placeholder="Город" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.legalCity"
+                               ui-autocomplete="legalCity">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legalPostalCode"></label>
+                    <div class="col-md-4">
+                        <input id="legalPostalCode"  type="text" placeholder="Почтовый индекс" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.legalPostalCode">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legalAddress"></label>
+                    <div class="col-md-4">
+                        <input id="legalAddress" type="text" placeholder="Улица, дом, офис" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.legalAddress">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="actualCountry">Фактический адрес *</label>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline" for="cb_sameaddress">
+                            <input type="checkbox"  id="cb_sameaddress" value="0" ng-click="checkSameAddress(company)" ng-model="company.sameAddress">
+                            Совпадает с юридическим адресом
+                        </label>
+                        <input id="actualCountry" type="text" placeholder="Страна" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.actualCountry" ui-autocomplete="actualCountry">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="actualProvince"></label>
+                    <div class="col-md-4">
+                        <input id="actualProvince"  type="text" placeholder="Область" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.actualProvince">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="actualCity"></label>
+                    <div class="col-md-4">
+                        <input id="actualCity" type="text" placeholder="Город" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.actualCity" ui-autocomplete="actualCity">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="actualPostalCode"></label>
+                    <div class="col-md-4">
+                        <input id="actualPostalCode"  type="text" placeholder="Почтовый индекс" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.actualPostalCode">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="actualAddress"></label>
+                    <div class="col-md-4">
+                        <input id="actualAddress"  type="text" placeholder="Улица, дом, офис" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.actualAddress">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="website">Адрес сайта компании *</label>
+                    <div class="col-md-4">
+                        <input id="website"  type="text" placeholder="site.com" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.site">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="phone">Контактный телефон компании *</label>
+                    <div class="col-md-4">
+                        <input id="phone" type="text" placeholder="" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.phone">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="staff">Количество сотрудников в компании</label>
+                    <div class="col-md-4">
+                        <input id="staff" type="text" placeholder="" class="form-control input-md"
+                               ng-model="company.groupAttributes.staffAmount">
+
+                    </div>
+                </div>
+
+                <!-- File Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="logo">Логотип компании</label>
+                    <div class="col-md-4">
+                        <input id="logo" class="input-file" type="file"
+                               ng-model="company.groupAttributes.logo" nv-file-select="" uploader="uploader">
+                        <div>
+                            <div>
+                                Queue progress:
+                                <div class="progress" style="">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                <span class="glyphicon glyphicon-upload"></span> Загрузить файл
+                            </button>
+                            <!--button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                            </button>
+                            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                <span class="glyphicon glyphicon-trash"></span> Remove all
+                            </button-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="lat">Географическая широта</label>
+                    <div class="col-md-4">
+                        <input id="lat" type="text" placeholder="25.433353" class="form-control input-md"
+                               ng-model="company.groupAttributes.latitude">
+                        <span class="help-block">Для присутствия на карте партнеров</span>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="long">Географическая долгота</label>
+                    <div class="col-md-4">
+                        <input id="long"  type="text" placeholder="44.746094" class="form-control input-md"
+                               ng-model="company.groupAttributes.longitude">
+                        <span class="help-block">Для присутствия на карте партнеров</span>
+                        <span class="help-block"><a target="_blank" href="http://itouchmap.com/latlong.html">Выяснить</a></span>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="chiefName">Руководитель компании *</label>
+                    <div class="col-md-4">
+                        <input id="chiefName" type="text" placeholder="Имя (и Отчество)" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.chiefName">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="chiefSurname"></label>
+                    <div class="col-md-4">
+                        <input id="chiefSurname" type="text" placeholder="Фамилия" class="form-control input-md" required=""
+                               ng-model="company.groupAttributes.chiefSurname">
+
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="select_chiefAppeal">Форма обращения к руководителю</label>
+                    <div class="col-md-4">
+                        <select id="select_chiefAppeal"  class="form-control" ng-model="company.groupAttributes.chiefAppeal">
+                            <option value=""></option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Г-н">Г-н</option>
+                            <option value="Г-жа">Г-жа</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <!--div class="form-group">
+                    <label class="col-md-4 control-label" for="brands">С какими брендами рынка автоматизации работает ваша компания?</label>
+                    <div class="col-md-4">
+                        <input id="brands"  type="text" placeholder="" class="form-control input-md"
+                               ng-model="company.brands">
+
+                    </div>
+                </div-->
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="comments">Дополнительная информация и комментарии</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="comments"  ng-model="company.groupAttributes.comments"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="captcha_result">Капча</label>
+                    <div class="col-md-4">
+                        <!--input id="captcha" name="captcha" type="text" placeholder="" class="form-control input-md" required=""-->
+                        <div class="large-2 columns captcha">
+                            <captcha field1="{{field1}}" operator="{{operator}}" field2="{{field2}}"></captcha>
+                        </div>
+                        <div class="large-1 columns captcha_result">
+                            <!--input type="text" ng-model="company.captcha_result" name="captcha_result" id="captcha_result" size="1" required /-->
+                            <input id="captcha_result"  type="text" class="form-control" size="1" ng-model="company.captcha_result" required=""
+                                   ng-model="company.captcha_result">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit_reg_company_btn"></label>
+                    <div class="col-md-4">
+                        <button id="submit_reg_company_btn"  class="btn btn-primary" ng-disabled="!company_reg_form.$valid">Отправить заявку</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </form>
+
+    </uib-tab>
+</uib-tabset>

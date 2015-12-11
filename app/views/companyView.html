@@ -1,0 +1,15 @@
+<join-company-tab ng-if="user.attr.groupState == 'NOGROUP'"></join-company-tab>
+<company-tab ng-if="user.attr.groupState == 'ATTACHED' && group.state != 'NEW'"></company-tab>
+
+<div id="request_cancel" ng-if="user.attr.groupState == 'JOINING' || ( user.attr.groupState == 'ATTACHED' && group.state == 'NEW' ) ">
+    <p ng-if="user.attr.groupState == 'JOINING'">'Ожидайте ответа на запрос "Присоединение компании '{{ group.name }}'"</p>
+    <button ng-if="user.attr.groupState == 'JOINING'" ng-click="cancelRequest('join')" class="btn btn-primary">Отменить запрос</button>
+
+    <p ng-if="user.attr.groupState == 'ATTACHED' && group.state == 'NEW'">Ожидайте ответа на запрос "Создание компании '{{ group.name }}'"</p>
+    <button ng-if="user.attr.groupState == 'ATTACHED' && group.state == 'NEW'" ng-click="cancelRequest('create')" class="btn btn-primary">Отменить запрос</button>
+</div>
+
+
+
+
+

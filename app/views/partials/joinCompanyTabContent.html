@@ -1,0 +1,29 @@
+<div id="joincompany_container">
+    <form name="join_company_form" novalidate>
+        <fieldset>
+            <div class="control-group">
+                <label for="input_search" class="control-label">Поиск компании</label>
+                <div class="controls">
+                    <input type="text" ng-keyup="companySearchKeyUp($event)" name="input_search" value=""
+                           class="form-control input-md" id="input_search" placeholder="Поиск компании" maxlength="150">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="okBtn"> </label>
+                <div class="controls">
+                    <button class="btn btn-primary" id="join_company">Присоединиться к компании</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="country_list">Список компаний</label>
+                <div class="controls">
+                    <div id="company_list" name="span4">
+
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

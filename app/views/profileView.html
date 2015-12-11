@@ -1,0 +1,172 @@
+<form class="form-horizontal" name="profile_edit_form" id="profile_edit_form" novalidate ng-submit="submitEditProfileForm(user)">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Редактирование профиля {{ user.attr.userAttributes.name }}</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Имя</label>
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="Имя"
+                       class="form-control input-md" required=""
+                       ng-model="user.attr.userAttributes.name">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="surname">Фамилия</label>
+            <div class="col-md-4">
+                <input id="surname" name="surname" type="text" placeholder="Фамилия"
+                       class="form-control input-md" required=""
+                       ng-model="user.attr.userAttributes.surname">
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="appeal">Форма обращения</label>
+            <div class="col-md-4">
+                <select id="appeal" name="appeal" class="form-control" ng-model="user.attr.userAttributes.appeal">
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Г-жа">Г-жа</option>
+                    <option value="Г-н">Г-н</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Login">Логин</label>
+            <div class="col-md-4">
+                <input id="Login" name="Login" type="text" placeholder="Логин"
+                       class="form-control input-md" readonly="readonly"
+                       value="{{ user.attr.login }}" >
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Пароль</label>
+            <div class="col-md-4">
+                <a href="javascript:;" data-toggle="modal" data-target=".change-pass-modal" class="inline-link">Изменить</a>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="position">Должность</label>
+            <div class="col-md-4">
+                <input id="position" name="position" type="text" placeholder="Position"
+                       class="form-control input-md" required=""
+                       ng-model="user.attr.userAttributes.position">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="regdate">Дата регистрации</label>
+            <div class="col-md-4">
+                <input id="regdate" name="regdate" type="text" placeholder="Дата регистрации"
+                       class="form-control input-md" readonly="readonly"
+                       value="{{ user.attr.registrationDate | date: 'dd.MM.yyyy' }}" >
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="language">Предпочитаемый язык</label>
+            <div class="col-md-4">
+                <select id="language" name="language" class="form-control" ng-model="user.attr.language">
+                    <option value="en">English (english)</option>
+                    <option value="ru">Русский (russian)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="comments">Комментарии</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="comments" ng-model="user.attr.userAttributes.comments"></textarea>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="captcha_result">Капча</label>
+            <div class="col-md-4">
+                <!--input id="captcha" name="captcha" type="text" placeholder="" class="form-control input-md" required=""-->
+                <div class="large-2 columns captcha">
+                    <captcha field1="{{field1}}" operator="{{operator}}" field2="{{field2}}"></captcha>
+                </div>
+                <div class="large-1 columns captcha_result">
+                    <!--input type="text" ng-model="captcha_result" name="captcha_result" id="captcha_result" size="1" required /-->
+                    <input id="captcha_result" name="captcha_result" type="text" class="form-control" size="1" ng-model="user.captcha_result" required="">
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary" ng-disabled="!profile_edit_form.$valid">Сохранить</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
+<div class="modal fade change-pass-modal" tabindex="-1" role="dialog" aria-labelledby="myChangePassModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Изменение пароля</h4>
+            </div>
+            <div class="modal-body">
+                <form name="change_pass_form" novalidate ng-submit="changePassword(change_pass)">
+                    <div class="form-group">
+                        <label class="control-label">Логин (Email)</label>
+                        <div class="">
+                            <input type="text"
+                                   class="form-control input-sm" readonly="readonly"
+                                   ng-model="change_pass.login" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Введите старый пароль</label>
+                        <div class="">
+                            <input type="password"
+                                   class="form-control input-sm"
+                                   ng-model="change_pass.old_pass"
+                                   ng-minlength="8" required >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Введите новый пароль</label>
+                        <div class="">
+                            <input type="password"
+                                   class="form-control input-sm"
+                                   ng-model="change_pass.new_pass"
+                                   ng-minlength="8" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-custom" ng-disabled="!change_pass_form.$valid">Сохранить</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->

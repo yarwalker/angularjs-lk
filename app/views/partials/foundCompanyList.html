@@ -1,0 +1,12 @@
+<ul>
+    <li ng-repeat="group in groups">
+        <div>
+            <label class="radio" for="{{ group.id }}">
+                <input type="radio" id="{{ group.id }}" name="group_id" ng-model="$parent.group_mix" value="{{ group.id }}#{{ group.name }}" >
+                {{ group.name }}
+            </label>
+            <div class="group-info">{{ group.groupAttributes.actualCountry }}, {{ group.groupAttributes.actualCity }}<br>
+                Руководитель компании: {{ group.groupAttributes.chiefAppeal }} {{ group.groupAttributes.chiefName }} {{ group.groupAttributes.chiefSurname }}</div>
+        </div>
+    </li>
+</ul>

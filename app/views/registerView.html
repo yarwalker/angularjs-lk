@@ -1,0 +1,113 @@
+<div class="container" id="user_reg_form_wrapper">
+    <form class="form-horizontal" name="user_reg_form" ng-submit="submitUserRegForm(user)" novalidate>
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Регистрация пользователя</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_login">Логин (ваш e-mail) *</label>
+                <div class="col-md-4">
+                    <input id="input_login" ng-model="user.login" type="email" placeholder="Логин (ваш e-mail)" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_password">Пароль *</label>
+                <div class="col-md-4">
+                    <input id="input_password" ng-model="user.password" type="password" placeholder="Пароль" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_name">Имя *</label>
+                <div class="col-md-4">
+                    <input id="input_name" ng-model="user.name" type="text" placeholder="Имя (и Отчество)" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_surname">Фамилия *</label>
+                <div class="col-md-4">
+                    <input id="input_surname" ng-model="user.surname" type="text" placeholder="Фамилия" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_position">Должность *</label>
+                <div class="col-md-4">
+                    <input id="input_position" ng-model="user.position" type="text" placeholder="Должность" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_select_appeal">Форма обращения</label>
+                <div class="col-md-4">
+                    <select id="input_select_appeal" ng-model="user.appeal" class="form-control">
+                        <option value=""></option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Г-н">Г-н</option>
+                        <option value="Г-жа">Г-жа</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_select_language">Предпочитаемый язык</label>
+                <div class="col-md-4">
+                    <select id="input_select_language" ng-model="user.language" class="form-control">
+                        <option value=""></option>
+                        <option value="ru">Русский (russian)</option>
+                        <option value="en">English (english)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="input_comments">Дополнительная информация и комментарии</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="input_comments" ng-model="user.comments"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="captcha_result">Капча</label>
+                <div class="col-md-4">
+                    <!--input id="captcha" name="captcha" type="text" placeholder="" class="form-control input-md" required=""-->
+                    <div class="large-2 columns captcha">
+                        <captcha field1="{{field1}}" operator="{{operator}}" field2="{{field2}}"></captcha>
+                    </div>
+                    <div class="large-1 columns captcha_result">
+                        <!--input type="text" ng-model="company.captcha_result" name="captcha_result" id="captcha_result" size="1" required /-->
+                        <input id="captcha_result"  type="text" class="form-control" size="1" ng-model="user.captcha_result" required="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submitBtn"></label>
+                <div class="col-md-4">
+                    <button id="submitBtn" name="submitBtn" class="btn btn-primary"
+                    ng-disabled="!user_reg_form.$valid">Зарегистрировать</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
